@@ -8,7 +8,7 @@ namespace DesignPatterns.CreationalPatterns.FactoryMethodPattern
 {
     public abstract class Knife
     {
-        public string Name { get; protected set; }
+        public abstract string Name { get;  }
         public void Sharpen()
         {
         }

@@ -12,9 +12,9 @@ namespace DesignPatterns.CreationalPatterns.FactoryMethodPattern
         {
 
         }
-        public Knife OrderKnife(string name)
+        public Knife OrderKnife(string type)
         {
-            Knife knife = CreateKnife(name);
+            Knife knife = CreateKnife(type);
 
             knife.Sharpen();
             knife.Polish();
@@ -22,6 +22,6 @@ namespace DesignPatterns.CreationalPatterns.FactoryMethodPattern
             return knife;
         }
 
-        abstract protected Knife CreateKnife(string name);
+        abstract protected Knife CreateKnife(string type);
     }
 }
