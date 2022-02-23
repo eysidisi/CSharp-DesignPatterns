@@ -15,10 +15,10 @@ namespace DesignPatterns.CreationalPatterns.Tests.SingletonPattern
             int expectedNum = 1;
 
             // Act
-            singletonPattern.anInteger++;
+            singletonPattern.IncreaseInteger();
 
             // Assert
-            Assert.Equal(expectedNum, singletonPattern.anInteger);
+            Assert.Equal(expectedNum, singletonPattern.AnInteger);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace DesignPatterns.CreationalPatterns.Tests.SingletonPattern
 
             for (int i = 0; i < numOfTasks; i++)
             {
-                Task task = new Task(() => singletonPattern.anInteger++);
+                Task task = new Task(() => singletonPattern.IncreaseInteger());
                 tasks.Add(task);
             }
 
@@ -40,7 +40,7 @@ namespace DesignPatterns.CreationalPatterns.Tests.SingletonPattern
             Task.WaitAll(tasks.ToArray());
 
             // Assert
-            Assert.Equal(numOfTasks, singletonPattern.anInteger);
+            Assert.Equal(numOfTasks, singletonPattern.AnInteger);
         }
     }
 }
