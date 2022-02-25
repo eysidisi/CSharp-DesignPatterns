@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns.CreationalPatterns.AdapterPattern;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,15 @@ namespace DesignPatterns.CreationalPatterns.Tests.AdapterPattern
         public void Request_ValidJson_Returns200()
         {
             // Arrange
+            WebService webService = new WebService();
+            string validJson = "a valid object";
+            int expectedOutput = 200;
 
             // Act
+            var actualOutput = webService.Request(validJson);
 
             // Assert
+            Assert.Equal(expectedOutput, actualOutput);
         }
     }
 }
