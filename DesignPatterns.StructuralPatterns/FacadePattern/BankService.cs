@@ -1,6 +1,6 @@
-﻿using DesignPatterns.CreationalPatterns.FacadePattern.Accounts;
+﻿using DesignPatterns.StructuralPatterns.FacadePattern.Accounts;
 
-namespace DesignPatterns.CreationalPatterns.FacadePattern
+namespace DesignPatterns.StructuralPatterns.FacadePattern
 {
     public class BankService
     {
