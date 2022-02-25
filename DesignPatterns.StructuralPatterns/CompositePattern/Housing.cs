@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.StructuralPatterns.CompositePattern
+namespace DesignPatterns.StructuralPatterns
 {
     public class Housing : IStructure
     {
@@ -25,7 +25,7 @@ namespace DesignPatterns.StructuralPatterns.CompositePattern
 
         public string Enter()
         {
-            return $"You entered house {GetName}";
+            return $"You entered house {GetName()}";
         }
 
         public string Exit()
@@ -40,7 +40,7 @@ namespace DesignPatterns.StructuralPatterns.CompositePattern
 
             foreach (var structure in structures)
             {
-                output += $" {structure.GetName} ";
+                output += $" {structure.GetName()} ";
             }
 
             return output;

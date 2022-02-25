@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.StructuralPatterns.CompositePattern
+namespace DesignPatterns.StructuralPatterns
 {
     public class Room : IStructure
     {
@@ -17,12 +17,12 @@ namespace DesignPatterns.StructuralPatterns.CompositePattern
 
         public string Enter()
         {
-            return $"you entered room {GetName}";
+            return $"you entered room {GetName()}";
         }
 
         public string Exit()
         {
-            return $"you exited room {GetName}";
+            return $"you exited room {GetName()}";
         }
 
         public string GetName()
