@@ -6,7 +6,7 @@ namespace DesignPatterns.CreationalPatterns.FacadePattern
     {
         Dictionary<int, IAccount> _accounts = new Dictionary<int, IAccount>();
         int nextAccountID = 1;
-        public int CreateAccount(string accountType, int initialAmount)
+        public int CreateAccount(string accountType, decimal initialAmount)
         {
             IAccount account = null;
 
@@ -32,6 +32,14 @@ namespace DesignPatterns.CreationalPatterns.FacadePattern
         public decimal GetAccAmount(int accID)
         {
             return _accounts[accID].TotalAmount;
+        }
+
+        public void TransferMoney(int fromAccID, int toAccID, decimal amount)
+        {
+            IAccount fromAcc = _accounts[fromAccID];
+            IAccount toAcc = _accounts[toAccID];
+
+            fromAcc.Transfer(toAcc, amount);
         }
     }
 }

@@ -2,7 +2,8 @@
 {
     public interface IAccount
     {   
-        public void Deposit(int amount);
+        public void Deposit(decimal amount);
+        public void Transfer(IAccount toAccount,decimal amount);
         public decimal TotalAmount { get; set; }
     }
 }

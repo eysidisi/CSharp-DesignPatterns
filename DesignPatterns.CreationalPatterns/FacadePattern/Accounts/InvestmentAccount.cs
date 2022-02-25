@@ -10,9 +10,15 @@ namespace DesignPatterns.CreationalPatterns.FacadePattern.Accounts
     {
         public decimal TotalAmount { get; set; }
 
-        public void Deposit(int amount)
+        public void Deposit(decimal amount)
         {
             TotalAmount += amount;
+        }
+
+        public void Transfer(IAccount toAccount, decimal amount)
+        {
+            TotalAmount -= amount;
+            toAccount.Deposit(amount);
         }
     }
 }

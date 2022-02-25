@@ -4,10 +4,18 @@
     {
         public decimal TotalAmount { get; set; }
 
-        public void Deposit(int amount)
+        public void Deposit(decimal amount)
         {
-            // %10 Bonus
+            // %10 bonus
             TotalAmount += (amount + amount * (decimal)0.1);
+        }
+
+        public void Transfer(IAccount toAccount, decimal amount)
+        {
+            // %10 commission
+
+            TotalAmount -= amount * (decimal)1.1;
+            toAccount.Deposit(amount);
         }
     }
 }

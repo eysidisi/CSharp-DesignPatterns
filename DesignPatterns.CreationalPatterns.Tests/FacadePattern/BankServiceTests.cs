@@ -14,7 +14,7 @@ namespace DesignPatterns.CreationalPatterns.Tests.FacadePattern
         public void CreateSavingAccount_CreatesSavingAccount()
         {
             // Arrange
-            int initialSavingAmount = 100;
+            decimal initialSavingAmount = 100;
             BankService bankService = new BankService();
             
             // Act
@@ -30,7 +30,7 @@ namespace DesignPatterns.CreationalPatterns.Tests.FacadePattern
         public void CreateInvestmentAccount_CreatesSavingAccount()
         {
             // Arrange
-            int initialSavingAmount = 100;
+            decimal initialSavingAmount = 100;
             BankService bankService = new BankService();
 
             // Act
@@ -41,5 +41,25 @@ namespace DesignPatterns.CreationalPatterns.Tests.FacadePattern
             // Assert
             Assert.Equal(expectedAmount, actualAmount);
         }
+
+        [Fact]
+        public void TransferMoney_TranfersMoney()
+        {
+            // Arrange
+            decimal initialSavingAmount = 100;
+            BankService bankService = new BankService();
+            decimal transferVal = 20;
+
+            // Act
+            var investmentAccId1 = bankService.CreateAccount("investment", initialSavingAmount);
+            var investmentAccId2 = bankService.CreateAccount("investment", initialSavingAmount);
+
+            bankService.TransferMoney(investmentAccId1, investmentAccId2, transferVal);
+
+            // Assert
+            Assert.Equal(80, bankService.GetAccAmount(investmentAccId1));
+            Assert.Equal(120, bankService.GetAccAmount(investmentAccId2));
+        }
+
     }
 }
