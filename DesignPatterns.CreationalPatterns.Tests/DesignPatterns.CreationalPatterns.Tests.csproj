@@ -25,4 +25,8 @@
     <ProjectReference Include="..\DesignPatterns.CreationalPatterns\DesignPatterns.CreationalPatterns.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CompositePattern\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.CreationalPatterns.AdapterPattern
+﻿namespace DesignPatterns.StructuralPatterns.AdapterPattern
 {
     public class WebService
     {

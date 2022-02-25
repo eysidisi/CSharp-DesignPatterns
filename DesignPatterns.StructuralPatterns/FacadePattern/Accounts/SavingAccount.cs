@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.CreationalPatterns.FacadePattern.Accounts
+﻿namespace DesignPatterns.StructuralPatterns.FacadePattern.Accounts
 {
     internal class SavingAccount : IAccount
     {
