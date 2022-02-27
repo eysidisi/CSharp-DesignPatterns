@@ -1,26 +1,46 @@
 ﻿using System;
 using DesignPatterns.StructuralPatterns;
+using DesignPatterns.StructuralPatterns.ProxyPattern;
+
 namespace DesingPatterns.Test
 {
     internal class Program
     {
         enum Pattern
         {
-            Composite
+            Composite,
+            Proxy
         }
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.Composite;
+            Pattern patternToTest = Pattern.Proxy;
 
             switch (patternToTest)
             {
                 case Pattern.Composite:
                     CompositePatternExample();
                     break;
+                case Pattern.Proxy:
+                    ProxyPatternExample();
+                    break;
                 default:
                     break;
             }
 
+        }
+
+        private static void ProxyPatternExample()
+        {
+            Warehouse warehouse1 = new Warehouse("warehouse 1 address");
+            warehouse1.AddInventory("order1", 1);
+
+            Warehouse warehouse2 = new Warehouse("warehouse 2 address");
+            warehouse2.AddInventory("order1", 2);
+
+            Order order = new Order(1, "order1");
+
+            OrderFulfillment orderFulfillment = new OrderFulfillment(new List<Warehouse>() { warehouse1, warehouse2 });
+            orderFulfillment.FullFillOrder(order);
         }
 
         private static void CompositePatternExample()
