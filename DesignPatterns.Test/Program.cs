@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
 using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
 using DesignPatterns.StructuralPatterns;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
@@ -13,11 +14,12 @@ namespace DesingPatterns.Test
             Composite,
             Proxy,
             Decorator,
-            TemplateMethodPattern
+            TemplateMethodPattern,
+            ChainOfResponsibilityPattern
         }
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.TemplateMethodPattern;
+            Pattern patternToTest = Pattern.ChainOfResponsibilityPattern;
 
             switch (patternToTest)
             {
@@ -33,9 +35,24 @@ namespace DesingPatterns.Test
                 case Pattern.TemplateMethodPattern:
                     TemplateMethodPatternExample();
                     break;
+                case Pattern.ChainOfResponsibilityPattern:
+                    ChainOfResponsibilityPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void ChainOfResponsibilityPatternExample()
+        {
+            RequestHandler handler2 = new Handler2(null);
+            RequestHandler handler1 = new Handler1(handler2);
+
+            Server server = new Server(handler1);
+
+            server.ProcessRequest("1");
+            server.ProcessRequest("2");
+            server.ProcessRequest("3");
         }
 
         private static void TemplateMethodPatternExample()
