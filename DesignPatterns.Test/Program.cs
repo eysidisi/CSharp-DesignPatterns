@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
 using DesignPatterns.StructuralPatterns;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
 using DesignPatterns.StructuralPatterns.ProxyPattern;
@@ -11,11 +12,12 @@ namespace DesingPatterns.Test
         {
             Composite,
             Proxy,
-            Decorator
+            Decorator,
+            TemplateMethodPattern
         }
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.Decorator;
+            Pattern patternToTest = Pattern.TemplateMethodPattern;
 
             switch (patternToTest)
             {
@@ -28,9 +30,21 @@ namespace DesingPatterns.Test
                 case Pattern.Decorator:
                     DecoratorPatternExample();
                     break;
+                case Pattern.TemplateMethodPattern:
+                    TemplateMethodPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void TemplateMethodPatternExample()
+        {
+            PenneAlfredo penneAlfredo = new PenneAlfredo();
+            SpaghettiMeatballs spaghettiMeatballs = new SpaghettiMeatballs();
+            penneAlfredo.MakeRecipe();
+            Console.WriteLine();
+            spaghettiMeatballs.MakeRecipe();
         }
 
         private static void DecoratorPatternExample()
