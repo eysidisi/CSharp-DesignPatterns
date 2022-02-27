@@ -1,5 +1,6 @@
 ﻿using System;
 using DesignPatterns.StructuralPatterns;
+using DesignPatterns.StructuralPatterns.DecoraterPattern;
 using DesignPatterns.StructuralPatterns.ProxyPattern;
 
 namespace DesingPatterns.Test
@@ -9,11 +10,12 @@ namespace DesingPatterns.Test
         enum Pattern
         {
             Composite,
-            Proxy
+            Proxy,
+            Decorator
         }
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.Proxy;
+            Pattern patternToTest = Pattern.Decorator;
 
             switch (patternToTest)
             {
@@ -23,10 +25,21 @@ namespace DesingPatterns.Test
                 case Pattern.Proxy:
                     ProxyPatternExample();
                     break;
+                case Pattern.Decorator:
+                    DecoratorPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
 
+        private static void DecoratorPatternExample()
+        {
+            BasicWebPage basicWebPage = new BasicWebPage();
+            AuthorizedWebPage authorizedWebPage = new AuthorizedWebPage(basicWebPage);
+            AuthenticatedWebPage authenticatedWebPage = new AuthenticatedWebPage(authorizedWebPage);
+
+            authenticatedWebPage.Display();
         }
 
         private static void ProxyPatternExample()
