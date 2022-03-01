@@ -1,5 +1,6 @@
 ﻿using System;
 using DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
+using DesignPatterns.BehaviouralPatterns.StatePattern;
 using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
 using DesignPatterns.StructuralPatterns;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
@@ -15,11 +16,12 @@ namespace DesingPatterns.Test
             Proxy,
             Decorator,
             TemplateMethodPattern,
-            ChainOfResponsibilityPattern
+            ChainOfResponsibilityPattern,
+            StatePattern
         }
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.ChainOfResponsibilityPattern;
+            Pattern patternToTest = Pattern.StatePattern;
 
             switch (patternToTest)
             {
@@ -38,9 +40,28 @@ namespace DesingPatterns.Test
                 case Pattern.ChainOfResponsibilityPattern:
                     ChainOfResponsibilityPatternExample();
                     break;
+                case Pattern.StatePattern:
+                    StatePatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void StatePatternExample()
+        {
+            VendingMachine vendingMachine = new VendingMachine(2, 1);
+            vendingMachine.InsertMoney(5);
+            vendingMachine.BuyProduct();
+            vendingMachine.BuyProduct();
+            vendingMachine.BuyProduct();
+            vendingMachine.InsertMoney(2);
+            vendingMachine.EjectMoney();
+            vendingMachine.BuyProduct();
+            vendingMachine.InsertMoney(1);
+            vendingMachine.BuyProduct();
+            vendingMachine.AddItems(2);
+            vendingMachine.BuyProduct();
         }
 
         private static void ChainOfResponsibilityPatternExample()

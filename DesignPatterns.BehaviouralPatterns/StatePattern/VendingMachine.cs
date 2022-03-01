@@ -8,12 +8,13 @@ namespace DesignPatterns.BehaviouralPatterns.StatePattern
 {
     public class VendingMachine
     {
-        State state;
+        MachineState state;
 
-        public VendingMachine()
+        public VendingMachine(int numberOfProducts, int price)
         {
-            state = new IdleState();
+            state = new IdleState(0, numberOfProducts, price);
         }
+
         public void InsertMoney(int amount)
         {
             state = state.InsertMoney(amount);
@@ -27,6 +28,11 @@ namespace DesignPatterns.BehaviouralPatterns.StatePattern
         public void BuyProduct()
         {
             state = state.BuyProduct();
+        }
+
+        public void AddItems(int numberOfItems)
+        {
+            state = state.AddItems(numberOfItems);
         }
     }
 }

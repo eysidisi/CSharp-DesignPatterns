@@ -6,28 +6,51 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.BehaviouralPatterns.StatePattern
 {
-    public class DollarState : State
+    public class DollarState : MachineState
     {
-        int money;
-        int numberOf
-        public DollarState(int money)
+        public DollarState(MachineState machineState) : base(machineState)
         {
-            this.money = money;
         }
 
-        public State BuyProduct()
+        public DollarState(int money, int numberOfProducts, int price) : base(money, numberOfProducts, price)
         {
-            throw new NotImplementedException();
         }
 
-        public State EjectMoney()
+        public override MachineState BuyProduct()
         {
-            throw new NotImplementedException();
+            if (money >= price)
+            {
+                Console.WriteLine("Bought 1 item");
+                money -= price;
+                numberOfProducts--;
+            }
+
+            else
+            {
+                Console.WriteLine($"Need {price - money} dollars");
+            }
+
+            Console.WriteLine($"Remaining money {money} dollars");
+
+            if (numberOfProducts == 0)
+            {
+                return new OutOfStockState(money, 0, price);
+            }
+
+            return this;
         }
 
-        public State InsertMoney(int amount)
+        public override MachineState EjectMoney()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{money} dollars are ejected");
+            return new IdleState(0, numberOfProducts, price);
+        }
+
+        public override MachineState InsertMoney(int amount)
+        {
+            Console.WriteLine($"{amount} dollars is inserted");
+            money += amount;
+            return this;
         }
     }
 }

@@ -6,24 +6,33 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.BehaviouralPatterns.StatePattern
 {
-    public class IdleState : State
+    public class IdleState : MachineState
     {
-        public State BuyProduct()
+        public IdleState(MachineState machineState) : base(machineState)
+        {
+        }
+
+        public IdleState(int money, int numberOfProducts, int price) : base(money, numberOfProducts, price)
+        {
+        }
+
+        public override MachineState BuyProduct()
         {
             Console.WriteLine("You need to insert money first!");
             return this;
         }
 
-        public State EjectMoney()
+        public override MachineState EjectMoney()
         {
             Console.WriteLine("You need to insert money first!");
             return this;
         }
 
-        public State InsertMoney(int amount)
+        public override MachineState InsertMoney(int amount)
         {
             Console.WriteLine($"Inserted {amount} dollars!");
-            return new DollarState(amount);
+            money = amount;
+            return new DollarState(money, numberOfProducts, price);
         }
     }
 }
