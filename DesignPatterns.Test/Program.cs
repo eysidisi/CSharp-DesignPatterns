@@ -1,5 +1,6 @@
 ﻿using System;
 using DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
+using DesignPatterns.BehaviouralPatterns.CommandPattern;
 using DesignPatterns.BehaviouralPatterns.StatePattern;
 using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
 using DesignPatterns.StructuralPatterns;
@@ -17,11 +18,13 @@ namespace DesingPatterns.Test
             Decorator,
             TemplateMethodPattern,
             ChainOfResponsibilityPattern,
-            StatePattern
+            StatePattern,
+            CommandPattern
         }
+
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.StatePattern;
+            Pattern patternToTest = Pattern.CommandPattern;
 
             switch (patternToTest)
             {
@@ -43,9 +46,42 @@ namespace DesingPatterns.Test
                 case Pattern.StatePattern:
                     StatePatternExample();
                     break;
+                case Pattern.CommandPattern:
+                    CommandPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void CommandPatternExample()
+        {
+            Number number = new Number() { Val = 5 };
+
+            int increaseAmount = 3;
+            int multiplyAmount = 2;
+
+            MathOperationCommand addition = new AdditionCommand(number, increaseAmount);
+            MathOperationCommand multiply = new MultiplicationCommand(number, multiplyAmount);
+            List<MathOperationCommand> commands = new List<MathOperationCommand>() { addition, multiply };
+
+            Console.WriteLine("Before Operations " + number);
+
+            for (int i = 0; i < commands.Count; i++)
+            {
+                var command = commands[i];
+                command.Execute();
+            }
+
+            Console.WriteLine("After Operations " + number);
+
+            for (int i = commands.Count - 1; i >= 0; i--)
+            {
+                var command = commands[i];
+                command.Unexecute();
+            }
+
+            Console.WriteLine("After Undos " + number);
         }
 
         private static void StatePatternExample()
