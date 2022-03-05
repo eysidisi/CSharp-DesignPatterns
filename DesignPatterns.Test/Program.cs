@@ -1,6 +1,7 @@
 ﻿using System;
 using DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
 using DesignPatterns.BehaviouralPatterns.CommandPattern;
+using DesignPatterns.BehaviouralPatterns.MediatorPattern;
 using DesignPatterns.BehaviouralPatterns.StatePattern;
 using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
 using DesignPatterns.StructuralPatterns;
@@ -19,12 +20,13 @@ namespace DesingPatterns.Test
             TemplateMethodPattern,
             ChainOfResponsibilityPattern,
             StatePattern,
-            CommandPattern
+            CommandPattern,
+            MediatorPattern
         }
 
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.CommandPattern;
+            Pattern patternToTest = Pattern.MediatorPattern;
 
             switch (patternToTest)
             {
@@ -49,9 +51,25 @@ namespace DesingPatterns.Test
                 case Pattern.CommandPattern:
                     CommandPatternExample();
                     break;
+                case Pattern.MediatorPattern:
+                    MediatorPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void MediatorPatternExample()
+        {
+            StockMediator stockMediator = new StockMediator();
+            Trader trader1 = new Trader(stockMediator, "Trader 1");
+            Trader trader2 = new Trader(stockMediator, "Trader 2");
+
+            trader1.BuyOffer("GOOGLE", 5);
+            trader2.SaleOffer("GOOGLE", 5);
+
+            trader2.SaleOffer("GOOGLE", 3);
+            trader1.BuyOffer("GOOGLE", 3);
         }
 
         private static void CommandPatternExample()
