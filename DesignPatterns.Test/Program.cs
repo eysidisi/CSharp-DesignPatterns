@@ -5,6 +5,10 @@ using DesignPatterns.BehaviouralPatterns.MediatorPattern;
 using DesignPatterns.BehaviouralPatterns.ObserverPattern;
 using DesignPatterns.BehaviouralPatterns.StatePattern;
 using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
+using DesignPatterns.CreationalPatterns.FactoryMethodPattern;
+using DesignPatterns.CreationalPatterns.FactoryMethodPattern.ChefsKnives;
+using DesignPatterns.CreationalPatterns.FactoryMethodPattern.SteakKnives;
+using DesignPatterns.CreationalPatterns.SingletonPattern;
 using DesignPatterns.StructuralPatterns;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
 using DesignPatterns.StructuralPatterns.ProxyPattern;
@@ -15,23 +19,31 @@ namespace DesingPatterns.Test
     {
         enum Pattern
         {
+            Singleton,
+            Factory,
             Composite,
             Proxy,
             Decorator,
-            TemplateMethodPattern,
-            ChainOfResponsibilityPattern,
-            StatePattern,
-            CommandPattern,
-            MediatorPattern,
-            ObserverPattern
+            TemplateMethod,
+            ChainOfResponsibility,
+            State,
+            Command,
+            Mediator,
+            Observer
         }
 
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.ObserverPattern;
+            Pattern patternToTest = Pattern.Factory;
 
             switch (patternToTest)
             {
+                case Pattern.Singleton:
+                    SingletonPatternExample();
+                    break;
+                case Pattern.Factory:
+                    FactoryPatternExample();
+                    break;
                 case Pattern.Composite:
                     CompositePatternExample();
                     break;
@@ -41,22 +53,22 @@ namespace DesingPatterns.Test
                 case Pattern.Decorator:
                     DecoratorPatternExample();
                     break;
-                case Pattern.TemplateMethodPattern:
+                case Pattern.TemplateMethod:
                     TemplateMethodPatternExample();
                     break;
-                case Pattern.ChainOfResponsibilityPattern:
+                case Pattern.ChainOfResponsibility:
                     ChainOfResponsibilityPatternExample();
                     break;
-                case Pattern.StatePattern:
+                case Pattern.State:
                     StatePatternExample();
                     break;
-                case Pattern.CommandPattern:
+                case Pattern.Command:
                     CommandPatternExample();
                     break;
-                case Pattern.MediatorPattern:
+                case Pattern.Mediator:
                     MediatorPatternExample();
                     break;
-                case Pattern.ObserverPattern:
+                case Pattern.Observer:
                     ObserverPatternExample();
                     break;
                 default:
@@ -64,12 +76,32 @@ namespace DesingPatterns.Test
             }
         }
 
+        private static void FactoryPatternExample()
+        {
+            KnifeStore chefsKnifeStore = new ChefsKnifeStore();
+            KnifeStore steakKnifeStore = new SteakKnifeStore();
+
+            var chefsKnife = chefsKnifeStore.OrderKnife("good");
+            Console.WriteLine(chefsKnife.Name);
+
+            var steakKnife = steakKnifeStore.OrderKnife("good");
+            Console.WriteLine(steakKnife.Name);
+        }
+
+        private static void SingletonPatternExample()
+        {
+            SingletonClass singletonClass = SingletonClass.GetInstance();
+            Console.WriteLine(singletonClass.AnInteger);
+            singletonClass.IncreaseInteger();
+            Console.WriteLine(singletonClass.AnInteger);
+        }
+
         private static void ObserverPatternExample()
         {
             Blog blog = new Blog();
             BlogReader reader1 = new BlogReader("reader1");
             BlogReader reader2 = new BlogReader("reader2");
-            
+
             blog.RegisterObserver(reader1);
             blog.RegisterObserver(reader2);
 
