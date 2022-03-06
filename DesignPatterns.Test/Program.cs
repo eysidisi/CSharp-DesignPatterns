@@ -2,6 +2,7 @@
 using DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
 using DesignPatterns.BehaviouralPatterns.CommandPattern;
 using DesignPatterns.BehaviouralPatterns.MediatorPattern;
+using DesignPatterns.BehaviouralPatterns.ObserverPattern;
 using DesignPatterns.BehaviouralPatterns.StatePattern;
 using DesignPatterns.BehaviouralPatterns.TemplateMethodPattern;
 using DesignPatterns.StructuralPatterns;
@@ -21,12 +22,13 @@ namespace DesingPatterns.Test
             ChainOfResponsibilityPattern,
             StatePattern,
             CommandPattern,
-            MediatorPattern
+            MediatorPattern,
+            ObserverPattern
         }
 
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.MediatorPattern;
+            Pattern patternToTest = Pattern.ObserverPattern;
 
             switch (patternToTest)
             {
@@ -54,9 +56,28 @@ namespace DesingPatterns.Test
                 case Pattern.MediatorPattern:
                     MediatorPatternExample();
                     break;
+                case Pattern.ObserverPattern:
+                    ObserverPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void ObserverPatternExample()
+        {
+            Blog blog = new Blog();
+            BlogReader reader1 = new BlogReader("reader1");
+            BlogReader reader2 = new BlogReader("reader2");
+            
+            blog.RegisterObserver(reader1);
+            blog.RegisterObserver(reader2);
+
+            blog.AddNewArticle("Article 1");
+
+            blog.UnregisterObserver(reader2);
+
+            blog.AddNewArticle("Article 2");
         }
 
         private static void MediatorPatternExample()
