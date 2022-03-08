@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.BehaviouralPatterns.ObserverPattern
 {
-    public interface IObserver
+    public interface IBlogObserver
     {
         public void Update(string article);
     }

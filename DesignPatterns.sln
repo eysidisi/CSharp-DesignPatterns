@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.StructuralPa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Test", "DesignPatterns.Test\DesignPatterns.Test.csproj", "{6342A430-F78F-46F1-9797-23DFA4957027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.BehaviouralPatterns", "DesignPatterns.BehaviouralPatterns\DesignPatterns.BehaviouralPatterns.csproj", "{CA291398-C77C-49EB-963D-90728C21D173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.BehaviouralPatterns", "DesignPatterns.BehaviouralPatterns\DesignPatterns.BehaviouralPatterns.csproj", "{CA291398-C77C-49EB-963D-90728C21D173}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.ArchitecturalPatterns", "DesignPatterns.ArchitecturalPatterns\DesignPatterns.ArchitecturalPatterns.csproj", "{97FC2D25-E9DD-4225-B07A-C26E0372E690}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CA291398-C77C-49EB-963D-90728C21D173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA291398-C77C-49EB-963D-90728C21D173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA291398-C77C-49EB-963D-90728C21D173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97FC2D25-E9DD-4225-B07A-C26E0372E690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97FC2D25-E9DD-4225-B07A-C26E0372E690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97FC2D25-E9DD-4225-B07A-C26E0372E690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97FC2D25-E9DD-4225-B07A-C26E0372E690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.BehaviouralPatterns.ObserverPattern
 {
-    public class BlogReader : IObserver
+    public class BlogReader : IBlogObserver
     {
         string name;
         public BlogReader(string name)

@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.ArchitecturalPatterns.MVC;
 using DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
 using DesignPatterns.BehaviouralPatterns.CommandPattern;
 using DesignPatterns.BehaviouralPatterns.MediatorPattern;
@@ -29,12 +30,13 @@ namespace DesingPatterns.Test
             State,
             Command,
             Mediator,
-            Observer
+            Observer,
+            MVC
         }
 
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.Factory;
+            Pattern patternToTest = Pattern.MVC;
 
             switch (patternToTest)
             {
@@ -71,9 +73,21 @@ namespace DesingPatterns.Test
                 case Pattern.Observer:
                     ObserverPatternExample();
                     break;
+                case Pattern.MVC:
+                    MVCPatternExample();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void MVCPatternExample()
+        {
+            StoreOrderModel storeOrderModel = new StoreOrderModel();
+            OrderController orderController = new OrderController(storeOrderModel);
+            OrderView orderView = new OrderView(orderController);
+            storeOrderModel.Subscribe(orderView);
+            orderView.CreateUI();
         }
 
         private static void FactoryPatternExample()

@@ -8,14 +8,14 @@ namespace DesignPatterns.BehaviouralPatterns.ObserverPattern
 {
     public abstract class Subject
     {
-        protected List<IObserver> observers = new List<IObserver>();
+        protected List<IBlogObserver> observers = new List<IBlogObserver>();
 
-        public void RegisterObserver(IObserver observer)
+        public void RegisterObserver(IBlogObserver observer)
         {
             observers.Add(observer);
         }
 
-        public void UnregisterObserver(IObserver observer)
+        public void UnregisterObserver(IBlogObserver observer)
         {
             observers.Remove(observer);
         }
