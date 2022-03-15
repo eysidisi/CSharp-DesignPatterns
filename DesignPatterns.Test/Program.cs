@@ -10,8 +10,8 @@ using DesignPatterns.CreationalPatterns.FactoryMethodPattern;
 using DesignPatterns.CreationalPatterns.FactoryMethodPattern.ChefsKnives;
 using DesignPatterns.CreationalPatterns.FactoryMethodPattern.SteakKnives;
 using DesignPatterns.CreationalPatterns.SingletonPattern;
-using DesignPatterns.StructuralPatterns;
 using DesignPatterns.StructuralPatterns.AdapterPattern;
+using DesignPatterns.StructuralPatterns.CompositePattern;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
 using DesignPatterns.StructuralPatterns.FacadePattern;
 using DesignPatterns.StructuralPatterns.ProxyPattern;
@@ -29,12 +29,12 @@ namespace DesingPatterns.Test
             Decorator,
             Facade,
             Proxy,
-            TemplateMethod,
             ChainOfResponsibility,
-            State,
             Command,
             Mediator,
             Observer,
+            State,
+            TemplateMethod,
             MVC
         }
 
@@ -65,14 +65,8 @@ namespace DesingPatterns.Test
                 case Pattern.Proxy:
                     ProxyPatternExample();
                     break;
-                case Pattern.TemplateMethod:
-                    TemplateMethodPatternExample();
-                    break;
                 case Pattern.ChainOfResponsibility:
                     ChainOfResponsibilityPatternExample();
-                    break;
-                case Pattern.State:
-                    StatePatternExample();
                     break;
                 case Pattern.Command:
                     CommandPatternExample();
@@ -82,6 +76,12 @@ namespace DesingPatterns.Test
                     break;
                 case Pattern.Observer:
                     ObserverPatternExample();
+                    break;
+                case Pattern.State:
+                    StatePatternExample();
+                    break;
+                case Pattern.TemplateMethod:
+                    TemplateMethodPatternExample();
                     break;
                 case Pattern.MVC:
                     MVCPatternExample();

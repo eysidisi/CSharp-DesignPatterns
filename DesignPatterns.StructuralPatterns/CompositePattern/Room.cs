@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatterns.StructuralPatterns
+namespace DesignPatterns.StructuralPatterns.CompositePattern
 {
     public class Room : IStructure
     {
