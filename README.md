@@ -3,17 +3,17 @@ This project is for creating some examples using the Design Patterns that are ta
 
 Here is a list of the Patterns that are implemented in this project:
 
-- Singleton
-- Factory
-- Adapter
-- Composite
-- Decorator
-- Facade
-- Proxy
-- ChainOfResponsibility
-- Command
-- Mediator
-- Observer
-- State
-- TemplateMethod
-- MVC
+- Singleton Pattern
+- Factory Pattern
+- Adapter Pattern
+- Composite Pattern
+- Decorator Pattern
+- Facade Pattern
+- Proxy Pattern
+- Chain of Responsibility Pattern
+- Command Pattern
+- Mediator Pattern
+- Observer Pattern
+- State Pattern
+- Template Method Pattern
+- MVC Pattern
