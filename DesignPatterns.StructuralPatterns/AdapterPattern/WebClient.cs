@@ -23,7 +23,7 @@ namespace DesignPatterns.StructuralPatterns.AdapterPattern
 
             if (reqResult == 200)
             {
-
+                Console.WriteLine("Valid answer from server!");
             }
 
             else if (reqResult == 400)
@@ -39,7 +39,7 @@ namespace DesignPatterns.StructuralPatterns.AdapterPattern
 
         private object MakeObject()
         {
-            return "An Object";
+            return "a valid object";
         }
     }
 }

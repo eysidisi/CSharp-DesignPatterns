@@ -11,6 +11,7 @@ using DesignPatterns.CreationalPatterns.FactoryMethodPattern.ChefsKnives;
 using DesignPatterns.CreationalPatterns.FactoryMethodPattern.SteakKnives;
 using DesignPatterns.CreationalPatterns.SingletonPattern;
 using DesignPatterns.StructuralPatterns;
+using DesignPatterns.StructuralPatterns.AdapterPattern;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
 using DesignPatterns.StructuralPatterns.ProxyPattern;
 
@@ -22,6 +23,7 @@ namespace DesingPatterns.Test
         {
             Singleton,
             Factory,
+            AdapterPattern,
             Composite,
             Proxy,
             Decorator,
@@ -36,7 +38,7 @@ namespace DesingPatterns.Test
 
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.MVC;
+            Pattern patternToTest = Pattern.AdapterPattern;
 
             switch (patternToTest)
             {
@@ -45,6 +47,9 @@ namespace DesingPatterns.Test
                     break;
                 case Pattern.Factory:
                     FactoryPatternExample();
+                    break;
+                case Pattern.AdapterPattern:
+                    AdapterPatternExample();
                     break;
                 case Pattern.Composite:
                     CompositePatternExample();
@@ -79,6 +84,19 @@ namespace DesingPatterns.Test
                 default:
                     break;
             }
+        }
+
+        private static void AdapterPatternExample()
+        {
+            WebAdapter adapter = new WebAdapter();
+
+            WebClient webClient = new WebClient(adapter);
+
+            WebService webService = new WebService();
+
+            adapter.Connect(webService);
+
+            webClient.DoWork();
         }
 
         private static void MVCPatternExample()
