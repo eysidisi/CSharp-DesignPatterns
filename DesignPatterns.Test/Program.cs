@@ -13,6 +13,7 @@ using DesignPatterns.CreationalPatterns.SingletonPattern;
 using DesignPatterns.StructuralPatterns;
 using DesignPatterns.StructuralPatterns.AdapterPattern;
 using DesignPatterns.StructuralPatterns.DecoraterPattern;
+using DesignPatterns.StructuralPatterns.FacadePattern;
 using DesignPatterns.StructuralPatterns.ProxyPattern;
 
 namespace DesingPatterns.Test
@@ -25,8 +26,9 @@ namespace DesingPatterns.Test
             Factory,
             AdapterPattern,
             Composite,
-            Proxy,
             Decorator,
+            Facade,
+            Proxy,
             TemplateMethod,
             ChainOfResponsibility,
             State,
@@ -38,7 +40,7 @@ namespace DesingPatterns.Test
 
         static void Main(string[] args)
         {
-            Pattern patternToTest = Pattern.AdapterPattern;
+            Pattern patternToTest = Pattern.Facade;
 
             switch (patternToTest)
             {
@@ -54,11 +56,14 @@ namespace DesingPatterns.Test
                 case Pattern.Composite:
                     CompositePatternExample();
                     break;
-                case Pattern.Proxy:
-                    ProxyPatternExample();
-                    break;
                 case Pattern.Decorator:
                     DecoratorPatternExample();
+                    break;
+                case Pattern.Facade:
+                    FacadePatternExample();
+                    break;
+                case Pattern.Proxy:
+                    ProxyPatternExample();
                     break;
                 case Pattern.TemplateMethod:
                     TemplateMethodPatternExample();
@@ -84,6 +89,24 @@ namespace DesingPatterns.Test
                 default:
                     break;
             }
+        }
+
+        private static void FacadePatternExample()
+        {
+            BankService bankService = new BankService();
+
+            var savingAccID = bankService.CreateAccount("SAVING", 10);
+            var investmentAccID = bankService.CreateAccount("INVESTMENT", 10);
+
+            Console.WriteLine("Money in acc 1 with bonuses: " + bankService.GetAccAmount(savingAccID));
+            Console.WriteLine("Money in acc 2 with bonuses: " + bankService.GetAccAmount(investmentAccID));
+
+            Console.WriteLine("Transferring 5 dollars from acc1 to acc2 with transaction fees");
+
+            bankService.TransferMoney(savingAccID, investmentAccID, 5);
+
+            Console.WriteLine("Money in acc 1 with bonuses: " + bankService.GetAccAmount(1));
+            Console.WriteLine("Money in acc 2 with bonuses: " + bankService.GetAccAmount(2));
         }
 
         private static void AdapterPatternExample()
