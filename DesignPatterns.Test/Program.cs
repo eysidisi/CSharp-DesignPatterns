@@ -24,7 +24,7 @@ namespace DesingPatterns.Test
         {
             Singleton,
             Factory,
-            AdapterPattern,
+            Adapter,
             Composite,
             Decorator,
             Facade,
@@ -50,7 +50,7 @@ namespace DesingPatterns.Test
                 case Pattern.Factory:
                     FactoryPatternExample();
                     break;
-                case Pattern.AdapterPattern:
+                case Pattern.Adapter:
                     AdapterPatternExample();
                     break;
                 case Pattern.Composite:
